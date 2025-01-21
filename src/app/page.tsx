@@ -1,10 +1,8 @@
 import { signOut } from '@/actions';
 import { signIn } from '@/actions';
-import { auth } from '@/auth';
 import { Button } from '@/components/ui/button';
 
 export default async function Home() {
-    const session = await auth();
     return (
         <div>
             <Button>test</Button>
@@ -18,7 +16,6 @@ export default async function Home() {
                     <button type="submit">Signout</button>
                 </form>
             </div>
-
         </div>
     );
 }
