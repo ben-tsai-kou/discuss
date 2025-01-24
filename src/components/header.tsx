@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { auth } from '@/auth';
 import { Input } from './ui/input';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
