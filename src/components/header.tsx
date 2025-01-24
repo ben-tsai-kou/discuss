@@ -3,6 +3,8 @@ import { auth } from '@/auth';
 import { Input } from './ui/input';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { Button } from './ui/button';
+import { signIn, signOut } from '@/actions';
+import { Popover, PopoverContent, PopoverTrigger } from './ui/popover';
 
 export default async function Header() {
     const session = await auth();
@@ -11,25 +13,39 @@ export default async function Header() {
     if (session?.user) {
         console.log(session.user);
         authContent = (
-            <div>
-                <Avatar>
-                    {session.user.image && (
-                        <AvatarImage src={session.user.image} />
-                    )}
-                    <AvatarFallback>{session.user.name}</AvatarFallback>
-                </Avatar>
-            </div>
+            <Popover>
+                <PopoverTrigger asChild>
+                    <Avatar>
+                        {session.user.image && (
+                            <AvatarImage src={session.user.image} />
+                        )}
+                        <AvatarFallback>{session.user.name}</AvatarFallback>
+                    </Avatar>
+                </PopoverTrigger>
+                <PopoverContent className="w-30">
+                    <form action={signOut}>
+                        <Button type="submit" className="w-full">
+                            Sign Out
+                        </Button>
+                    </form>
+                </PopoverContent>
+            </Popover>
         );
     } else {
         authContent = (
             <div className="flex gap-3">
-                <Button type="submit" className="bg-zinc-500">
-                    Sign in
-                </Button>
-                <Button type="submit">Sign up</Button>
+                <form action={signIn}>
+                    <Button type="submit" className="bg-zinc-500">
+                        Sign in
+                    </Button>
+                </form>
+                <form action={signIn}>
+                    <Button type="submit">Sign up</Button>
+                </form>
             </div>
         );
     }
+
     return (
         <header className="border">
             <nav className="flex justify-between items-center">
