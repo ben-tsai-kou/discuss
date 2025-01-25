@@ -28,7 +28,13 @@ export default function TopicCreateForm() {
                             id="description"
                             placeholder="Describe your topic"
                         />
-                        <Button type="submit">Submit</Button>
+                        <Button
+                            type="submit"
+                            variant="outline"
+                            className="bg-gray-300"
+                        >
+                            Submit
+                        </Button>
                     </div>
                 </form>
             </PopoverContent>
