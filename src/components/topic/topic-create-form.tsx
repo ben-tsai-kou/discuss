@@ -22,11 +22,12 @@ export default function TopicCreateForm() {
                     <div className="flex flex-col gap-4 p-4">
                         <h3 className="text-lg">Create a Topic</h3>
                         <Label htmlFor="name">Name</Label>
-                        <Input id="name" placeholder="Name" />
+                        <Input id="name" name="name" placeholder="Name" />
                         <Label htmlFor="description">Description</Label>
                         <Textarea
                             id="description"
                             placeholder="Describe your topic"
+                            name="description"
                         />
                         <Button
                             type="submit"
