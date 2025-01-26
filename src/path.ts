@@ -3,7 +3,7 @@ export const path = {
         return '/';
     },
     topicShow({ topicSlug }: { topicSlug: string }) {
-        return `/topic/${topicSlug}`;
+        return `/topics/${topicSlug}`;
     },
     postCreate({ topicSlug }: { topicSlug: string }) {
         return `/topic/${topicSlug}/posts/new`;
