@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import React from 'react';
 import { Label } from '@/components/ui/label';
 import {
     Popover,
@@ -10,6 +11,10 @@ import { Textarea } from '../ui/textarea';
 import { createTopic } from '@/actions';
 
 export default function TopicCreateForm() {
+    const [formState, action] = React.useActionState(createTopic, {
+        errors: {},
+    });
+
     return (
         <Popover>
             <PopoverTrigger asChild>
@@ -18,7 +23,7 @@ export default function TopicCreateForm() {
                 </Button>
             </PopoverTrigger>
             <PopoverContent className="w-80">
-                <form action={createTopic}>
+                <form action={action}>
                     <div className="flex flex-col gap-4 p-4">
                         <h3 className="text-lg">Create a Topic</h3>
                         <Label htmlFor="name">Name</Label>
