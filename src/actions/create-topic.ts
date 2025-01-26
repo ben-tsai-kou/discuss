@@ -29,6 +29,7 @@ export const createTopic = async (
     });
 
     if (!result.success) {
+        console.log(result.error.flatten());
         return {
             errors: result.error.flatten().fieldErrors,
         };
