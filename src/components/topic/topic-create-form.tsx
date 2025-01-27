@@ -11,9 +11,10 @@ import {
 } from '@/components/ui/popover';
 import { Textarea } from '../ui/textarea';
 import { createTopic } from '@/actions';
+import FormButton from '../common/form-button';
 
 export default function TopicCreateForm() {
-    const [formState, action] = useActionState(createTopic, {
+    const [formState, action, isPending] = useActionState(createTopic, {
         errors: {},
     });
 
@@ -75,13 +76,13 @@ export default function TopicCreateForm() {
                             </div>
                         )}
 
-                        <Button
-                            type="submit"
+                        <FormButton
+                            isLoading={isPending}
                             variant="outline"
                             className="bg-gray-300"
                         >
                             Submit
-                        </Button>
+                        </FormButton>
                     </div>
                 </form>
             </PopoverContent>
