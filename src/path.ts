@@ -6,9 +6,9 @@ export const path = {
         return `/topics/${topicSlug}`;
     },
     postCreate({ topicSlug }: { topicSlug: string }) {
-        return `/topic/${topicSlug}/posts/new`;
+        return `/topics/${topicSlug}/posts/new`;
     },
     postShow({ topicSlug, postId }: { topicSlug: string; postId: string }) {
-        return `/topic/${topicSlug}/posts/${postId}`;
+        return `/topics/${topicSlug}/posts/${postId}`;
     },
 };
