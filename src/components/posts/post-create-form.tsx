@@ -10,13 +10,20 @@ import {
     PopoverTrigger,
 } from '@/components/ui/popover';
 import { Textarea } from '../ui/textarea';
-import { createTopic } from '@/actions';
+import { createPost } from '@/actions';
 import FormButton from '../common/form-button';
 
-export default function PostCreateForm() {
-    const [formState, action, isPending] = useActionState(createTopic, {
-        errors: {},
-    });
+type Props = {
+    slug: string;
+};
+
+export default function PostCreateForm({ slug }: Props) {
+    const [formState, action, isPending] = useActionState(
+        createPost.bind(null, slug),
+        {
+            errors: {},
+        }
+    );
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -43,14 +50,14 @@ export default function PostCreateForm() {
                             name="title"
                             placeholder="title"
                             className={`${
-                                formState.errors.name
+                                formState.errors.title
                                     ? 'border border-red-600'
                                     : ''
                             }`}
                         />
-                        {formState.errors.name && (
+                        {formState.errors.title && (
                             <p className="text-red-600">
-                                {formState.errors.name?.join(', ')}
+                                {formState.errors.title?.join(', ')}
                             </p>
                         )}
                         <Label htmlFor="content">Content</Label>
@@ -59,14 +66,14 @@ export default function PostCreateForm() {
                             placeholder="Describe your topic"
                             name="content"
                             className={`${
-                                formState.errors.description
+                                formState.errors.content
                                     ? 'border border-red-600'
                                     : ''
                             }`}
                         />
-                        {formState.errors.description && (
+                        {formState.errors.content && (
                             <p className="text-red-600">
-                                {formState.errors.description?.join(', ')}
+                                {formState.errors.content?.join(', ')}
                             </p>
                         )}
 
